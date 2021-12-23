@@ -5,7 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import LogInPage from './pages/LogInPage/LogInPage';
-import UserPage from './pages/UserPage/UserPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import Error404 from './pages/Error404/Error404';
 import Footer from './components/Footer/Footer';
 
@@ -16,7 +16,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LogInPage />} />
-                <Route path="/user" element={<UserPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

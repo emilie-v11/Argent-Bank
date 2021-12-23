@@ -26,7 +26,7 @@ const SignInForm = () => {
                 label={'Remember me'}
             />
             {/* PLACEHOLDER DUE TO STATIC SITE */}
-            <NavLink to="/user" className="sign-in-button">
+            <NavLink to="/profile" className="sign-in-button">
                 Sign In
             </NavLink>
 

@@ -18,16 +18,25 @@
     text-decoration: none;
     color: #2c3e50;
     margin-right: 0.5rem;
-}
-
-a:hover {
-    color: #2c3e50;
+    font-size: 1.2rem;
 }
 
 .main-nav-item:hover {
     text-decoration: none;
     color: #2c3e50;
 }
+
+a:hover {
+    color: #2c3e50;
+}
+
+.main-nav-item i {
+    margin-right: 10px;
+}
+
+/* .main-nav-item i::before {
+    font-size: 1.5rem;
+} */
 
 .main-nav-logo {
     display: flex;

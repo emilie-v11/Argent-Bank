@@ -1,0 +1,26 @@
+/* form */
+.sign-in-form {
+    /* margin-top: 3rem;
+    margin-top: 1rem; */
+    margin: 1rem 0;
+}
+
+/* button */
+.sign-in-button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    /* margin-top: 1rem; */
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    text-decoration: none;
+    margin: 2rem 0;
+}
+
+.sign-in-button:hover {
+    color: #fff;
+    background: #018a58;
+}

@@ -9,104 +9,14 @@
     min-height: 86vh;
 }
 
-.main-signIn {
-    min-height: 86vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
 .bg-dark {
     background-color: #12002b;
 }
-/* ============================================================================ */
-/* HomePage */
-
 
 /* ============================================================================ */
 /* LoginPage */
-.sign-in-button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    /* margin-top: 1rem; */
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
-    text-decoration: none;
-    margin: 2rem 0;
-}
 
-.sign-in-button:hover {
-    color: #fff;
-    background: #018a58;
-}
-
-.sign-in-container {
-    box-sizing: border-box;
-    background-color: white;
-    width: 300px;
-    margin: 0 auto;
-    /* padding: 2rem; */
-    /* margin-top: 3rem; */
-    margin-bottom: 3rem;
-    width: 30rem;
-    height: 35rem;
-    height: 40rem;
-}
-
-.sign-in-content {
-    width: 100%;
-    height: auto;
-    padding: 4rem 2rem;
-}
-.sign-in-content h1 {
-    margin: 1.5rem;
-}
-
-.sign-in-content form {
-    margin: 3rem 0;
-}
-
-.sign-in-icon::before {
-    font-size: 5rem;
-    /* color: #e1e6ed; */
-    color: #a2adb9;
-}
-
-.input-remember {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    justify-content: left;
-}
-
-.input-remember label {
-    margin-left: 0.25rem;
-}
-
-.input-wrapper {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-bottom: 1rem;
-    padding: 5px 0;
-    font-size: 1.1rem;
-}
-
-.input-wrapper label {
-    font-weight: bold;
-    padding-bottom: 5px;
-}
-
-.input-wrapper input {
-    padding: 5px;
-    font-size: 1.1rem;
-}
-
+/* form */
 /* ============================================================================ */
 /* UserPage */
 .heading {

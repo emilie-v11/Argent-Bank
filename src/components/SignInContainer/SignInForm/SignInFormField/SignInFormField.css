@@ -1,0 +1,32 @@
+/* inputs & label*/
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+    padding: 5px 0;
+    font-size: 1.1rem;
+}
+
+.input-wrapper label {
+    font-weight: bold;
+    /* padding-bottom: 5px; */
+    margin-bottom: 5px;
+}
+
+.input-wrapper input {
+    padding: 5px;
+    font-size: 1.1rem;
+}
+
+/* Remember checkbox */
+.input-remember {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: left;
+}
+
+.input-remember label {
+    margin-left: 0.25rem;
+}

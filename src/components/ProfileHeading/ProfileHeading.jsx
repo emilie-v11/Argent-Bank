@@ -10,7 +10,7 @@ const ProfileHeading = () => {
                 <br />
                 Tony Jarvis!
             </h1>
-            <button className="edit-button">Edit Name</button>
+            <button  className=" btn edit-button">Edit Name</button>
         </section>
     );
 };

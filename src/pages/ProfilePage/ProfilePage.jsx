@@ -1,14 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import UserService from '../../services/user.service';
 import Account from '../../components/Account/Account';
 import ProfileHeading from '../../components/ProfileHeading/ProfileHeading';
 import './ProfilePage.css';
 
 const ProfilePage = () => {
+    const [content, setContent] = useState('');
+
+    useEffect(() => {
+        UserService.getUserBoard().then(
+            response => {
+                setContent(response.data);
+                console.log(response.data);
+            },
+            error => {
+                const _content =
+                    (error.response && error.response.data && error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+                setContent(_content);
+            }
+        );
+    }, []);
+
     return (
         <main className="main-user">
-            <ProfileHeading />
+            {/* <ProfileHeading /> */}
+            <section className="heading text-center">
+                <h1 className="greetings">
+                    Welcome back
+                    <br />
+                    {'Tony'} {'Jarvis'}!
+                </h1>
+                <button className=" btn edit-button">Edit Name</button>
+            </section>
+
             <section className="accounts">
-                <h2 className="sr-only">Accounts</h2>
+                <h2 className="visually-hidden">Accounts</h2>
                 <Account
                     id={'checking'}
                     title={'Argent Bank Checking (x8349)'}

@@ -8,7 +8,7 @@ import SecurityIcon from '../../assets/img/icon-security.png';
 const Features = () => {
     return (
         <section className="features">
-            <h2 className="sr-only">Features</h2>
+            <h2 className="visually-hidden">Features</h2>
             <FeatureItem
                 imgSrc={ChatIcon}
                 alt="Chat Icon"

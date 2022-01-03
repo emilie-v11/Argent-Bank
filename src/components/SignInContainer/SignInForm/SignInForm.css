@@ -1,7 +1,7 @@
 /* form */
 .sign-in-form {
-    /* margin-top: 3rem;
-    margin-top: 1rem; */
+    /* margin-top: 3rem; */
+    /* margin-top: 1rem; */
     margin: 1rem 0;
 }
 
@@ -18,9 +18,4 @@
     color: #fff;
     text-decoration: none;
     margin: 2rem 0;
-}
-
-.sign-in-button:hover {
-    color: #fff;
-    background: #018a58;
 }

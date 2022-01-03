@@ -4,9 +4,14 @@ import './SignInHeading.css';
 
 const SignInHeading = ({ classIcon, title }) => {
     return (
-        <div className="sign-in-heading">
+        <div className="sign-in-heading text-center">
             <i className={classIcon}></i>
-            <h1>{title}</h1>
+            {/* <img
+                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                alt="profile-img"
+                className="profile-img-card"
+            /> */}
+            <h1 className="m-2">{title}</h1>
         </div>
     );
 };

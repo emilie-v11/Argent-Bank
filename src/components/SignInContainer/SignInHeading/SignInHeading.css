@@ -1,7 +1,3 @@
-.sign-in-heading {
-    margin: 1rem 0;
-}
-
 .sign-in-heading i {
     margin: 1rem;
 }
@@ -9,10 +5,15 @@
 .sign-in-heading i::before {
     font-size: 5rem;
     color: #e1e6ed;
-    color: #a2adb9;
+    /* color: #a2adb9; */
 }
 
-.sign-in-heading h1 {
-    /* margin: 1rem; */
-    font-size: 1.5rem;
-}
+/* .profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+} */

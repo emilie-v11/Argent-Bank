@@ -4,7 +4,7 @@ import './ProfileHeading.css';
 
 const ProfileHeading = () => {
     return (
-        <section className="heading">
+        <section className="heading text-center">
             <h1 className="greetings">
                 Welcome back
                 <br />

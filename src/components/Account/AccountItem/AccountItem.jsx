@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './Account.css';
 
 const AccountItem = ({ id, title, amount, description }) => {
     return (

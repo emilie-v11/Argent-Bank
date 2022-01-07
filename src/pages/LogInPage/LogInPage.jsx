@@ -42,6 +42,7 @@ const LogInPage = props => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
+    
     const [loading, setLoading] = useState(false);
 
     const { isLoggedIn } = useSelector(state => state.auth);

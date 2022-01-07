@@ -9,8 +9,8 @@ assignees: ''
 A user should be able to:
 
 - [X] Navigate to the login page (`/login`)
-- [ ] Fill out credentials
-- [ ] Login to the back-end API with JWT tokens for authentication
-- [ ] Successfully navigate to a profile page (`/profile`)
+- [X] Fill out credentials
+- [X] Login to the back-end API with JWT tokens for authentication
+- [X] Successfully navigate to a profile page (`/profile`)
 
 For more information on accessing the design assets, see the [Design Assets section in the README](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API#design-assets).

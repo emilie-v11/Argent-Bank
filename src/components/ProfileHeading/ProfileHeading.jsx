@@ -1,20 +1,25 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './ProfileHeading.css';
 
-const ProfileHeading = () => {
+const ProfileHeading = ({ firstName, lastName, toggleShowEdition }) => {
     return (
         <section className="heading text-center">
             <h1 className="greetings">
                 Welcome back
                 <br />
-                Tony Jarvis!
+                {firstName} {lastName}!
             </h1>
-            <button  className=" btn edit-button">Edit Name</button>
+            <button className=" btn edit-button" onClick={toggleShowEdition}>
+                Edit Name
+            </button>
         </section>
     );
 };
 
-// ProfileHeading.propTypes = {};
+ProfileHeading.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+};
 
 export default ProfileHeading;

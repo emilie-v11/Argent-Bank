@@ -1,9 +1,9 @@
 import React from 'react';
-import './Account.css';
+import './Accounts.css';
 import { accountData } from '../../data/mockData';
 import AccountItem from './AccountItem/AccountItem';
 
-const Account = () => {
+const Accounts = () => {
     return (
         <section className="accounts">
             <h2 className="visually-hidden">Accounts</h2>
@@ -20,4 +20,4 @@ const Account = () => {
     );
 };
 
-export default Account;
+export default Accounts;

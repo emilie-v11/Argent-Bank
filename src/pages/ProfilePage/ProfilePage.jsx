@@ -8,7 +8,7 @@ import './ProfilePage.css';
 import Loader from '../../components/Loader/Loader';
 import Error404 from '../Error404/Error404';
 import EditProfileHeading from './EditProfileHeading';
-import Account from '../../components/Account/Account';
+import Accounts from '../../components/Accounts/Accounts';
 // import { logout } from '../../actions/auth';
 
 const ProfilePage = () => {
@@ -77,7 +77,7 @@ const ProfilePage = () => {
                 )}
                 {/*TODO add props in button = onClick={editUserName}*/}
 
-                <Account />
+                <Accounts />
             </main>
         );
     }

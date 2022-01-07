@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,7 @@ import { logout } from './actions/auth';
 import { clearMessage } from './actions/messages';
 import { history } from './helpers/history';
 
-import store from './store';
+// import store from './store';
 
 function App() {
     // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -44,7 +44,7 @@ function App() {
     // };
 
     return (
-        <Provider store={store}>
+        <BrowserRouter>
             {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
                 <NavLink to={'/'} className="navbar-brand">
                     bezKoder
@@ -100,11 +100,10 @@ function App() {
                 <Route path="/login" element={<LogInPage />} />
                 <Route path="/signup" element={<Register />} />
                 <Route path="/profile" element={<ProfilePage />} />
-                {/* <Route path="/user" element={<ProfilePage />} /> */}
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />
-        </Provider>
+        </BrowserRouter>
     );
 }
 

@@ -13,7 +13,8 @@
 }
 
 .Loader-Overlay p {
-    color: #ff6060;
+    font-weight: bold;
+    color: #005634;
     padding-bottom: 2rem;
 }
 
@@ -50,7 +51,7 @@
     transform-origin: center;
     transform-origin: center;
     transform-origin: center;
-    stroke: #ff6060;
+    stroke: #005634;
     animation: dash 1.4s ease-in-out infinite;
     animation: dash 1.4s ease-in-out infinite;
 }

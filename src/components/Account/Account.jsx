@@ -1,25 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Account.css';
+import { accountData } from '../../data/mockData';
+import AccountItem from './AccountItem/AccountItem';
 
-const Account = ({ id, title, amount, description }) => {
+const Account = () => {
     return (
-        <article id={id} className="account">
-            <div className="account-content-wrapper">
-                <h3 className="account-title">{title}</h3>
-                <p className="account-amount">${amount}</p>
-                <p className="account-amount-description">{description}</p>
-            </div>
-            <button className="btn transaction-button">View transactions</button>
-        </article>
+        <section className="accounts">
+            <h2 className="visually-hidden">Accounts</h2>
+            {accountData.map(account => (
+                <AccountItem
+                    key={account.id}
+                    id={account.id}
+                    title={account.title}
+                    amount={account.amount}
+                    description={account.description}
+                />
+            ))}
+        </section>
     );
-};
-
-Account.propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
 };
 
 export default Account;

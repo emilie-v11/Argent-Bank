@@ -127,7 +127,9 @@ const Register = () => {
                         {!successful && (
                             <div>
                                 <div className="form-group text-start">
-                                    <label htmlFor="firstname">First name</label>
+                                    <label className="fw-bold" htmlFor="firstname">
+                                        First name
+                                    </label>
                                     <Input
                                         type="text"
                                         className="form-control"
@@ -139,7 +141,9 @@ const Register = () => {
                                 </div>
 
                                 <div className="form-group text-start">
-                                    <label htmlFor="lastname">Last name</label>
+                                    <label className="fw-bold" htmlFor="lastname">
+                                        Last name
+                                    </label>
                                     <Input
                                         type="text"
                                         className="form-control"
@@ -151,7 +155,9 @@ const Register = () => {
                                 </div>
 
                                 <div className="form-group text-start">
-                                    <label htmlFor="email">Email</label>
+                                    <label className="fw-bold" htmlFor="email">
+                                        Email
+                                    </label>
                                     <Input
                                         type="text"
                                         className="form-control"
@@ -163,7 +169,9 @@ const Register = () => {
                                 </div>
 
                                 <div className="form-group text-start">
-                                    <label htmlFor="password">Password</label>
+                                    <label className="fw-bold" htmlFor="password">
+                                        Password
+                                    </label>
                                     <Input
                                         type="password"
                                         className="form-control"

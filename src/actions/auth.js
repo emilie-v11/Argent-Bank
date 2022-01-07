@@ -8,7 +8,6 @@ import {
     // EDIT_PROFILE_SUCCESS,
     // EDIT_PROFILE_FAIL,
 } from './types';
-
 import AuthService from '../services/auth.service';
 
 export const register = (firstName, lastName, email, password) => dispatch => {
@@ -50,8 +49,9 @@ export const login = (email, password) => dispatch => {
         data => {
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: { user: data },
+                payload: data,
             });
+            console.log(data);
 
             return Promise.resolve();
         },

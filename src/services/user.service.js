@@ -5,15 +5,19 @@ import { API_URL } from './auth.service';
 // const API_URL = 'http://localhost:3001/api/v1/user/';
 
 class UserService {
-    getPublicContent() {
-        return axios.get(API_URL + 'all');
-    }
+    // getPublicContent() {
+    //     return axios.get(API_URL + 'all');
+    // }
 
     getUserBoard() {
-        console.log(authHeader());
-        // return axios.post(API_URL + 'profile', { headers: authHeader() });
-        return axios.post(API_URL + 'profile', { headers: authHeader() });
-        // return axios.get(API_URL, { headers: authHeader() });
+        console.log({headers: { ...authHeader() }});
+        return axios.post(API_URL + 'profile', {}, { headers: { ...authHeader() } });
+        // return axios({
+        //     method: 'post',
+        //     url: `${API_URL}profile`,
+        //     headers: { ...authHeader() },
+        //     // data: data.data.body,
+        // });
     }
 
     // getModeratorBoard() {
@@ -31,7 +35,7 @@ export default new UserService();
 //     return axios.get(API_URL + 'all');
 // };
 
-// const getUserBoard = () => {
+// const getUserInfos = () => {
 //     return axios.get(API_URL + 'user', { headers: authHeader() });
 // };
 
@@ -43,4 +47,4 @@ export default new UserService();
 //     return axios.get(API_URL + 'admin', { headers: authHeader() });
 // };
 
-// export { getPublicContent, getUserBoard, getModeratorBoard, getAdminBoard };
+// export { getPublicContent, getUserInfos, getModeratorBoard, getAdminBoard };

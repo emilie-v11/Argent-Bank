@@ -10,15 +10,16 @@ import {
 
 const user = JSON.parse(localStorage.getItem('user'));
 
-const initialState = {
-    email: '',
-    firstName: '',
-    lastName: '',
-    isLoggedIn: false,
-    user: null,
-};
+// FIXME BUG
+// const initialState = {
+//     email: '',
+//     firstName: '',
+//     lastName: '',
+//     isLoggedIn: false,
+//     user: null,
+// };
 
-// const initialState = user ? { isLoggedIn: true, user } : { isLoggedIn: false, user: null };
+const initialState = user ? { isLoggedIn: true, user } : { isLoggedIn: false, user: null };
 
 function auth(state = initialState, action) {
     const { type, payload } = action;

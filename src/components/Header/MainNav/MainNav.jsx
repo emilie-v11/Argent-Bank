@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logo from '../../../assets/img/argentBankLogo.png';
 import './MainNav.css';
 import { logout } from '../../../actions/auth';
@@ -8,15 +9,12 @@ import { logout } from '../../../actions/auth';
 const MainNav = () => {
     const { isLoggedIn } = useSelector(state => state.auth);
     // const { message } = useSelector(state => state.message);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
     const dispatch = useDispatch();
 
     const signOut = () => {
         dispatch(logout());
-        // return {
-        //     localStorage.removeItem('user')
-        // };
     };
 
     return (
@@ -46,8 +44,6 @@ const MainNav = () => {
                     </NavLink>
                 </div>
             )}
-
-            {/* <button class="sign-in-button">Sign In</button> */}
         </nav>
     );
 };

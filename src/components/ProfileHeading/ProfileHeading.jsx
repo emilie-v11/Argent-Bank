@@ -18,8 +18,9 @@ const ProfileHeading = ({ firstName, lastName, toggleShowEdition }) => {
 };
 
 ProfileHeading.propTypes = {
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    toggleShowEdition: PropTypes.func.isRequired,
 };
 
 export default ProfileHeading;

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import './App.css';
+// import React, { useState, useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+// import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import Header from './components/Header/Header';
@@ -13,9 +12,9 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import Error404 from './pages/Error404/Error404';
 import Footer from './components/Footer/Footer';
 
-import { logout } from './actions/auth';
-import { clearMessage } from './actions/messages';
-import { history } from './helpers/history';
+// import { logout } from './actions/auth';
+// import { clearMessage } from './actions/messages';
+// import { history } from './helpers/history';
 
 // import store from './store';
 
@@ -45,55 +44,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <NavLink to={'/'} className="navbar-brand">
-                    bezKoder
-                </NavLink>
-                <div className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <NavLink to={'/'} className="nav-link">
-                            Home
-                        </NavLink>
-                    </li>
-
-                    {currentUser && (
-                        <li className="nav-item">
-                            <NavLink to={'/user'} className="nav-link">
-                                User
-                            </NavLink>
-                        </li>
-                    )}
-                </div>
-
-                {currentUser ? (
-                    <div className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <NavLink to={'/profile'} className="nav-link">
-                                {currentUser.username}
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <a href="/login" className="nav-link" onClick={logOut}>
-                                LogOut
-                            </a>
-                        </li>
-                    </div>
-                ) : (
-                    <div className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <NavLink to={'/login'} className="nav-link">
-                                Login
-                            </NavLink>
-                        </li>
-
-                        <li className="nav-item">
-                            <NavLink to={'/signup'} className="nav-link">
-                                Sign Up
-                            </NavLink>
-                        </li>
-                    </div>
-                )}
-            </nav> */}
+           
             <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />

@@ -1,16 +1,15 @@
 import axios from 'axios';
+import MainNav from '../components/Header/MainNav/MainNav';
 import authHeader from './auth-header';
 import { API_URL } from './auth.service';
 
 // const API_URL = 'http://localhost:3001/api/v1/user/';
 
 class UserService {
-    // getPublicContent() {
-    //     return axios.get(API_URL + 'all');
-    // }
-
-    getUserBoard() {
-        console.log({headers: { ...authHeader() }});
+    // getUserBoard
+    getUserProfile() {
+        // console.log({headers: { ...authHeader() }});
+        // console.log();
         return axios.post(API_URL + 'profile', {}, { headers: { ...authHeader() } });
         // return axios({
         //     method: 'post',
@@ -20,13 +19,22 @@ class UserService {
         // });
     }
 
-    // getModeratorBoard() {
-    //     return axios.get(API_URL + 'mod', { headers: authHeader() });
-    // }
+    // FIXME BUG  'editeditUserInfos' => 'updateUserProfile'
+    updateUserProfile(firstName, lastName) {
+        return axios
+            .put(API_URL + 'profile', {
+                firstName,
+                lastName,
+            })
+            .then(response => {
+                if (response.data.body.token) {
+                    localStorage.setItem('firstName', JSON.stringify(response.data));
+                    localStorage.setItem('lastName', JSON.stringify(response.data));
+                }
 
-    // getAdminBoard() {
-    //     return axios.get(API_URL + 'admin', { headers: authHeader() });
-    // }
+                return response.data;
+            });
+    }
 }
 
 export default new UserService();

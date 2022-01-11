@@ -4,24 +4,13 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    // EDIT_PROFILE_FAIL,
-    EDIT_PROFILE_SUCCESS,
 } from '../actions/types';
 
 const user = JSON.parse(localStorage.getItem('user'));
 
-// FIXME BUG
-// const initialState = {
-//     email: '',
-//     firstName: '',
-//     lastName: '',
-//     isLoggedIn: false,
-//     user: null,
-// };
-
 const initialState = user ? { isLoggedIn: true, user } : { isLoggedIn: false, user: null };
 
-function auth(state = initialState, action) {
+export default function auth(state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
@@ -42,14 +31,6 @@ function auth(state = initialState, action) {
                 user: payload.user,
                 // user: payload,
             };
-        case EDIT_PROFILE_SUCCESS:
-            return {
-                ...state,
-                isLoggedIn: true,
-                user: payload,
-                firstName: payload.firstName,
-                lastName: payload.lastName,
-            };
 
         case LOGIN_FAIL:
             return {
@@ -67,5 +48,3 @@ function auth(state = initialState, action) {
             return state;
     }
 }
-
-export default auth;

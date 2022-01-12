@@ -1,8 +1,7 @@
 .account {
     display: flex;
     justify-content: space-between;
-
-    /* justify-content: center; */
+    flex-direction: column;
 
     align-items: center;
     border: 1px solid black;
@@ -14,9 +13,7 @@
 }
 
 .account-content-wrapper {
-    text-align: left;
-
-    /* text-align: center; */
+    text-align: center;
 }
 
 .account-title {
@@ -45,16 +42,21 @@
     display: block;
     width: 100%;
     font-size: 1.1rem;
-    /* margin-top: 1rem; */
+    margin-top: 1rem;
     padding: 8px;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
     .account {
         flex-direction: row;
     }
 
+    .account-content-wrapper {
+        text-align: left;
+    }
+
     .transaction-button {
         width: 200px;
+        margin-top: 0;
     }
 }

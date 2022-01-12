@@ -8,6 +8,7 @@ import { logout } from '../../../actions/auth';
 
 const MainNav = () => {
     const { isLoggedIn } = useSelector(state => state.auth);
+    // const { firstName } = useSelector(state => state.user);
     // const { message } = useSelector(state => state.message);
     // const [loading, setLoading] = useState(false);
 
@@ -24,8 +25,8 @@ const MainNav = () => {
                 <h1 className="visually-hidden">Argent Bank</h1>
             </NavLink>
             {!isLoggedIn ? (
-                <div>
-                    <NavLink className="main-nav-item mx-5" to="/login">
+                <div className="main-nav-items">
+                    <NavLink className="main-nav-item mx-md-5" to="/login">
                         {/* <i className="fa fa-user-circle"></i> */}
                         Sign In
                     </NavLink>
@@ -34,8 +35,8 @@ const MainNav = () => {
                     </NavLink>
                 </div>
             ) : (
-                <div>
-                    <NavLink className="main-nav-item mx-5" to="/profile">
+                <div className="main-nav-items">
+                    <NavLink className="main-nav-item mx-md-5" to="/profile">
                         <i className="fa fa-user-circle"></i>
                         {'firstName'}
                     </NavLink>

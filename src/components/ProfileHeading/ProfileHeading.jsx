@@ -5,7 +5,7 @@ import './ProfileHeading.css';
 const ProfileHeading = ({ firstName, lastName, toggleShowEdition }) => {
     return (
         <section className="heading text-center">
-            <h1 className="greetings">
+            <h1 className="greetings text-capitalize">
                 Welcome back
                 <br />
                 {firstName} {lastName}!

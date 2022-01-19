@@ -131,6 +131,7 @@ const LogInPage = props => {
                             <Input
                                 className="form-check-input"
                                 type="checkbox"
+                                name="rememberMe"
                                 value={rememberMe}
                                 checked={rememberMe}
                                 id="remember-me"

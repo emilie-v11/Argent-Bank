@@ -1,9 +1,14 @@
 // import React, { useState, useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
-// import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+// import { PersistGate } from 'redux-persist/integration/react';
+// import { store, persistor } from './store';
+import store from './store';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import LogInPage from './pages/LogInPage/LogInPage';
@@ -11,12 +16,11 @@ import Register from './pages/RegisterPage/Register';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import Error404 from './pages/Error404/Error404';
 import Footer from './components/Footer/Footer';
+import Loader from './components/Loader/Loader';
 
 // import { logout } from './actions/auth';
 // import { clearMessage } from './actions/messages';
 // import { history } from './helpers/history';
-
-// import store from './store';
 
 function App() {
     // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -44,16 +48,19 @@ function App() {
 
     return (
         <BrowserRouter>
-           
-            <Header />
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LogInPage />} />
-                <Route path="/signup" element={<Register />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="*" element={<Error404 />} />
-            </Routes>
-            <Footer />
+            <Provider store={store}>
+                {/* <PersistGate loading={<Loader />} persistor={persistor}> */}
+                <Header />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LogInPage />} />
+                    <Route path="/signup" element={<Register />} />
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="*" element={<Error404 />} />
+                </Routes>
+                <Footer />
+                {/* </PersistGate> */}
+            </Provider>
         </BrowserRouter>
     );
 }

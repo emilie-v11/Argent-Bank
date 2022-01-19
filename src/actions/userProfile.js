@@ -10,9 +10,37 @@ import {
 } from './types';
 
 // FIXME BUG
+export const getUserInfos = () => async dispatch => {
+    try {
+        const 
+    } catch (error) {
+        
+    }
+    return UserService.getUserProfile(firstName, lastName).then(response => {
+        dispatch({
+            type: GET_USER_PROFILE_SUCCESS,
+            payload: response.data,
+        });
+
+        return Promise.resolve();
+    });
+};
 // export const getUserInfos = (firstName, lastName) => dispatch => {
-//     return UserService.getUserProfile(firstName, lastName).then(
+//     return UserService.getUserProfile(firstName, lastName).then(response => {
+//         dispatch({
+//             type: GET_USER_PROFILE_SUCCESS,
+//             payload: response.data,
+//         });
+
+//         return Promise.resolve();
+//     });
+// };
+
+//
+// export const getUserInfos = () => dispatch => {
+//     return UserService.getUserProfile().then(
 //         response => {
+//             console.log(response.data.data.body);
 //             dispatch({
 //                 type: GET_USER_PROFILE_SUCCESS,
 //                 payload: response.data,
@@ -20,37 +48,25 @@ import {
 
 //             return Promise.resolve();
 //         },
+//         error => {
+//             const message =
+//                 (error.response && error.response.data && error.response.data.message) ||
+//                 error.message ||
+//                 error.toString();
 
-export const getUserInfos = () => dispatch => {
-    return UserService.getUserProfile().then(
-        response => {
-            console.log(response.data.data.body);
-            dispatch({
-                type: GET_USER_PROFILE_SUCCESS,
-                payload: response.data,
-            });
+//             dispatch({
+//                 type: GET_USER_PROFILE_FAIL,
+//             });
 
-            return Promise.resolve();
-        },
-        error => {
-            const message =
-                (error.response && error.response.data && error.response.data.message) ||
-                error.message ||
-                error.toString();
+//             dispatch({
+//                 type: SET_MESSAGE,
+//                 payload: message,
+//             });
 
-            dispatch({
-                type: GET_USER_PROFILE_FAIL,
-            });
-
-            dispatch({
-                type: SET_MESSAGE,
-                payload: message,
-            });
-
-            return Promise.reject();
-        }
-    );
-};
+//             return Promise.reject();
+//         }
+//     );
+// };
 
 export const UpdateUserInfos = (firstName, lastName) => dispatch => {
     return UserService.updateUserProfile(firstName, lastName).then(

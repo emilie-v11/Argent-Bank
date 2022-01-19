@@ -53,9 +53,9 @@
     margin-right: 10px;
 }
 
-/* .main-nav-item i::before {
+.main-nav-item i::before {
     font-size: 1.5rem;
-} */
+}
 
 @media (min-width: 768px) {
     .main-nav {

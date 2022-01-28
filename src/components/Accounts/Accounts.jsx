@@ -1,6 +1,6 @@
 import React from 'react';
 import './Accounts.css';
-import { accountData } from '../../data/mockData';
+import { accountData } from '../../assets/data/mockData';
 import AccountItem from './AccountItem/AccountItem';
 
 const Accounts = () => {

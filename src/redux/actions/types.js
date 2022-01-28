@@ -8,6 +8,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 
 // USER PROFILE
+export const GET_USER_PROFILE = 'GET_USER_PROFILE';
 export const GET_USER_PROFILE_SUCCESS = 'GET_USER_PROFILE_SUCCESS';
 export const GET_USER_PROFILE_FAIL = 'GET_USER_PROFILE_FAIL';
 
@@ -17,9 +18,3 @@ export const UPDATE_USER_PROFILE_FAIL = 'UPDATE_USER_PROFILE_FAIL';
 // MESSAGES
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
-
-// export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
-// export const LOG_IN_FAIL = 'LOG_IN_FAIL';
-// export const LOG_OUT = 'LOG_OUT';
-// export const EDIT_PROFILE = 'EDIT_PROFILE';
-// export const REFRESH_TOKEN = 'REFRESH_TOKEN';

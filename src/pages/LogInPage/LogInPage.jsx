@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { login } from '../../actions/auth';
+import { login } from '../../redux/actions/auth';
 
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
@@ -19,16 +19,6 @@ const required = value => {
     }
 };
 
-// const required = value => {
-//     if (!value) {
-//         return (
-//             <div className="alert alert-danger" role="alert">
-//                 This field is required!
-//             </div>
-//         );
-//     }
-// };
-
 const email = value => {
     if (!isEmail(value)) {
         return <small className="form-text text-danger">Invalid email format</small>;
@@ -43,12 +33,30 @@ const LogInPage = props => {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const { isLoggedIn } = useSelector(state => state.auth);
+    const { isLoggedIn } = useSelector(state => state.authUser);
     const { message } = useSelector(state => state.message);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        const memoUserEmail = localStorage.getItem('memo-useremail');
+        const memoUserPassword = localStorage.getItem('memo-userpassword');
+
+        if ((memoUserEmail && memoUserPassword) !== null) {
+            setUsername(memoUserEmail);
+            setPassword(memoUserPassword);
+            setRememberMe(true);
+        } else {
+            setUsername('');
+            setPassword('');
+            setRememberMe(false);
+        }
+        return () => {
+            form.current = false;
+        };
+    }, []);
 
     const onChangeUsername = e => {
         const username = e.target.value;
@@ -60,31 +68,29 @@ const LogInPage = props => {
         setPassword(password);
     };
 
-    // TODO add function for remember me - save username/email
     const onChangeRememberMe = e => {
         const rememberMe = e.currentTarget.checked;
-        // console.log(rememberMe);
         setRememberMe(rememberMe);
     };
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        setLoading(true);
+        setIsLoading(true);
 
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            dispatch(login(username, password))
+            dispatch(login(username, password, rememberMe))
                 .then(() => {
                     props.history.push('/profile');
                     window.location.reload();
                 })
                 .catch(() => {
-                    setLoading(false);
+                    setIsLoading(false);
                 });
         } else {
-            setLoading(false);
+            setIsLoading(false);
         }
     };
 
@@ -105,7 +111,7 @@ const LogInPage = props => {
                             </label>
                             <Input
                                 type="text"
-                                className="form-control"
+                                className="form-control text-lowercase"
                                 name="username"
                                 value={username}
                                 onChange={onChangeUsername}
@@ -143,8 +149,8 @@ const LogInPage = props => {
                         </div>
 
                         <div className="form-group">
-                            <button className="sign-in-button rounded-2" disabled={loading}>
-                                {loading ? (
+                            <button className="sign-in-button rounded-2" disabled={isLoading}>
+                                {isLoading ? (
                                     <span className="spinner-border spinner-border-sm"></span>
                                 ) : (
                                     <span>Sign In</span>

@@ -1,70 +1,51 @@
-// import React, { useState, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Provider } from 'react-redux';
-// import { PersistGate } from 'redux-persist/integration/react';
-// import { store, persistor } from './store';
-import store from './store';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
-import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import LogInPage from './pages/LogInPage/LogInPage';
 import Register from './pages/RegisterPage/Register';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import Error404 from './pages/Error404/Error404';
-import Footer from './components/Footer/Footer';
-import Loader from './components/Loader/Loader';
 
-// import { logout } from './actions/auth';
-// import { clearMessage } from './actions/messages';
-// import { history } from './helpers/history';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInfos } from './redux/actions/userProfile';
+import Loader from './components/Loader/Loader';
+import { getCookie } from './services/useCookies';
 
 function App() {
-    // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-    // const [showAdminBoard, setShowAdminBoard] = useState(false);
+    const dispatch = useDispatch();
+    const isLoaded = useSelector(state => state.authUser.isLoaded);
+    console.log(isLoaded);
 
-    // const { user: currentUser } = useSelector(state => state.auth);
-    // const dispatch = useDispatch();
+    useEffect(() => {
+        // const token = localStorage.getItem('token');
+        const token = getCookie('signin-token');
+        if (token) {
+            dispatch(getUserInfos());
+        }
+    }, [dispatch]);
 
-    // useEffect(() => {
-    //     history.listen(location => {
-    //         dispatch(clearMessage()); // clear message when changing location
-    //     });
-    // }, [dispatch]);
-
-    // useEffect(() => {
-    //     if (currentUser) {
-    //         setShowModeratorBoard(currentUser.roles.includes('ROLE_MODERATOR'));
-    //         setShowAdminBoard(currentUser.roles.includes('ROLE_ADMIN'));
-    //     }
-    // }, [currentUser]);
-
-    // const logOut = () => {
-    //     dispatch(logout());
-    // };
-
+    if (!isLoaded) {
+        return <Loader />;
+    }
     return (
         <BrowserRouter>
-            <Provider store={store}>
-                {/* <PersistGate loading={<Loader />} persistor={persistor}> */}
-                <Header />
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<LogInPage />} />
-                    <Route path="/signup" element={<Register />} />
-                    <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="*" element={<Error404 />} />
-                </Routes>
-                <Footer />
-                {/* </PersistGate> */}
-            </Provider>
+            <Header />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/signup" element={<Register />} />
+                <Route path="/login" element={<LogInPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="*" element={<Error404 />} />
+            </Routes>
+            <Footer />
         </BrowserRouter>
     );
 }
 
 export default App;
-
-/* <Provider store={store}> </Provider>*/

@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# OpenClassrooms training project #13 - Argent Bank App
+
+Argent Bank application is an app that lets user to log in and see their profile.
+
+The data is retrieved from an external NodeJS server.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+-   [npm](https://www.npmjs.com/) v7.24.0
 
-### `yarn start`
+-   [yarn](https://yarnpkg.com/) v1.22.11
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   [NodeJS](https://nodejs.org/en/) v.16.10.0
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Dependencies
 
-### `yarn test`
+-   [React](https://reactjs.org/) v17.0.2
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   [react-router-dom](https://reactrouter.com/web/guides/quick-start) v6.2.1
 
-### `yarn build`
+-   [axios](https://github.com/axios/axios) v0.24.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   [Redux](https://redux.js.org/) v4.1.2
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   [react-redux](https://react-redux.js.org/) v7.2.6
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   [redux-thunk](https://github.com/reduxjs/redux-thunk) v2.4.1
 
-### `yarn eject`
+-   [redux-persist](https://www.npmjs.com/package/redux-persist) v6.0.0
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   [prop-types](https://www.npmjs.com/package/prop-types) v15.7.2
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   [Bootstrap](https://getbootstrap.com/) v5.1.3
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-   [font-awesome](https://fontawesome.com/) v4.7.0
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Backend Repository
 
-## Learn More
+Clone this [external NodeJS server](https://github.com/emilie-v11/P13_ArgentBank_Backend-API-) for the micro API of this project. Follow the instructions inside the README file, for the installation of the dependencies and the execution
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Frontend Repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   Fork this repository
 
-### Code Splitting
+-   Clone to your local on a directory of your choice.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-   From the terminal, change directory to the cloned project directory.
 
-### Analyzing the Bundle Size
+-   Install with command `yarn install`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+-   Run the project with command `yarn start`
 
-### Making a Progressive Web App
+The project will run in `http://localhost:3000` (reserve port 3001 for Backend micro API)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Existing path
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   For the time being, the existing paths are:
+    -   `http://localhost:3000/` for homepage.
+    -   `http://localhost:3000/signup` for register page.
+    -   `http://localhost:3000/login` for login page.
+    -   `http://localhost:3000/profile` for user profile page (only accessible after a succesful login authentification).

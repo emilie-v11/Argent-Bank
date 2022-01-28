@@ -1,7 +1,7 @@
 import React from 'react';
 import './Features.css';
 import FeatureItem from '../../components/Features/FeatureItem/FeatureItem';
-import { featureData } from '../../data/mockData';
+import { featureData } from '../../assets/data/mockData';
 
 const Features = () => {
     return (

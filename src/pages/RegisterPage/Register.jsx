@@ -6,8 +6,9 @@ import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import { isEmail } from 'validator';
 
-import { register } from '../../actions/auth';
+import { register } from '../../redux/actions/auth';
 import SignInHeading from '../../components/SignInContainer/SignInHeading/SignInHeading';
+import { useNavigate } from 'react-router-dom';
 
 const required = value => {
     if (!value) {
@@ -25,26 +26,25 @@ const validEmail = value => {
             <div className="alert alert-danger" role="alert">
                 This is not a valid email.
             </div>
-            // <small className="form-text text-danger">This is not a valid email.</small>
         );
     }
 };
 
 const vfirstname = value => {
-    if (value.length < 3 || value.length > 20) {
+    if (value.length < 2 || value.length > 20) {
         return (
             <div className="alert alert-danger" role="alert">
-                The firstname must be between 3 and 20 characters.
+                The firstname must be between 2 and 20 characters.
             </div>
         );
     }
 };
 
 const vlastname = value => {
-    if (value.length < 3 || value.length > 20) {
+    if (value.length < 2 || value.length > 20) {
         return (
             <div className="alert alert-danger" role="alert">
-                The lastname must be between 3 and 20 characters.
+                The lastname must be between 2 and 20 characters.
             </div>
         );
     }
@@ -72,6 +72,8 @@ const Register = () => {
 
     const { message } = useSelector(state => state.message);
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const onChangeFirstname = e => {
         const firstname = e.target.value;
@@ -104,6 +106,10 @@ const Register = () => {
             dispatch(register(firstname, lastname, email, password))
                 .then(() => {
                     setSuccessful(true);
+                    setTimeout(() => {
+                        setSuccessful(false);
+                        navigate('/login');
+                    }, 2000);
                 })
                 .catch(() => {
                     setSuccessful(false);
@@ -117,12 +123,6 @@ const Register = () => {
                 <div className="sign-in-content">
                     <SignInHeading classIcon={'fa fa-user-circle'} title={'Sign Up'} />
 
-                    {/* <img
-                    src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                    alt="profile-img"
-                    className="profile-img-card"
-                /> */}
-
                     <Form className="sign-in-form" onSubmit={handleRegister} ref={form}>
                         {!successful && (
                             <div>
@@ -132,7 +132,7 @@ const Register = () => {
                                     </label>
                                     <Input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control text-capitalize"
                                         name="firstname"
                                         value={firstname}
                                         onChange={onChangeFirstname}
@@ -146,7 +146,7 @@ const Register = () => {
                                     </label>
                                     <Input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control text-capitalize"
                                         name="lastname"
                                         value={lastname}
                                         onChange={onChangeLastname}
@@ -160,7 +160,7 @@ const Register = () => {
                                     </label>
                                     <Input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control text-lowercase"
                                         name="email"
                                         value={email}
                                         onChange={onChangeEmail}
@@ -174,7 +174,7 @@ const Register = () => {
                                     </label>
                                     <Input
                                         type="password"
-                                        className="form-control"
+                                        className="form-control text-lowercase"
                                         name="password"
                                         value={password}
                                         onChange={onChangePassword}

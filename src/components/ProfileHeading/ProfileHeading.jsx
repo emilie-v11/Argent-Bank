@@ -5,10 +5,13 @@ import './ProfileHeading.css';
 const ProfileHeading = ({ firstName, lastName, toggleShowEdition }) => {
     return (
         <section className="heading text-center">
-            <h1 className="greetings text-capitalize">
+            <h1 className="greetings">
                 Welcome back
                 <br />
-                {firstName} {lastName}!
+                {}
+                <span className="text-capitalize">
+                    {firstName} {lastName} !
+                </span>
             </h1>
             <button className=" btn edit-button" onClick={toggleShowEdition}>
                 Edit Name

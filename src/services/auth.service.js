@@ -1,32 +1,31 @@
 import axios from 'axios';
-
-export const API_URL = 'http://localhost:3001/api/v1';
+import { API_URL } from './API-URL';
+import { deleteCookie, getCookie, setCookie } from './useCookies';
 
 class AuthService {
-    login(email, password) {
-        return axios.post(API_URL + '/user/login', { email, password })
-            .then(response => {
-            console.log(response.data.body.token);
-            console.log(response.data);
-            if (response.data.body.token) {
-                localStorage.setItem('user', JSON.stringify(response.data));
-            }
-            return response.data;
-        });
-    }
-
-    logout() {
-        localStorage.removeItem('user');
-        // localStorage.clear();
-    }
-
     register(firstName, lastName, email, password) {
-        return axios.post(API_URL + '/user/signup', {
+        return axios.post(API_URL + '/signup', {
             firstName,
             lastName,
             email,
             password,
         });
+    }
+
+    async login(email, password) {
+        const response = await axios.post(API_URL + '/login', { email, password });
+        const token = response.data.body.token;
+        if (token) {
+            // localStorage.setItem('token', JSON.stringify(token));
+            setCookie('signin-token', token, 1);
+        }
+        return response.data;
+    }
+
+    logout() {
+        // localStorage.removeItem('token');
+        const signTok = getCookie('signin-token');
+        deleteCookie('signin-token', signTok);
     }
 }
 

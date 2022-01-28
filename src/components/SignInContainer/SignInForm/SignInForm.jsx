@@ -31,18 +31,7 @@ const SignInForm = ({ onSubmit, onChange, validations, checked, value }) => {
                 value={value}
                 onChange={onChange}
             />
-            {/* PLACEHOLDER DUE TO STATIC SITE */}
-            {/* <NavLink to="/profile" className="sign-in-button">
-                Sign In
-            </NavLink> */}
-
             <button className="sign-in-button">Sign In</button>
-
-            {/* SHOULD BE THE BUTTON BELOW */}
-            {/* <button className="sign-in-button">Sign In</button> */}
-            {/* FIXME change for an input with submit
-                <input type="submit" value="Sign In" />
-            */}
         </form>
     );
 };

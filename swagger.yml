@@ -1,0 +1,214 @@
+swagger: '2.0'
+info:
+    title: 'Argent Bank API Documentation'
+    description: 'Possible API endpoints for phase two of Argent Bank project.'
+    version: '1.0.0'
+    termsOfService: 'http://swagger.io/terms/'
+
+host: 'localhost:3001'
+basePath: '/api/v2/user'
+tags:
+    - name: 'User Account'
+      description: "Endpoints for user's account data"
+    - name: 'User Transactions'
+      description: "Endpoints for user's transactions data"
+schemes:
+    - 'https'
+    - 'http'
+paths:
+    /account:
+        get:
+            tags:
+                - 'User Account'
+            summary: 'User account summary'
+            description: 'API to retrieve user account summary'
+            operationId: 'userAccount'
+            consumes:
+                - 'application/json'
+            produces:
+                - 'application/json'
+            parameters:
+                - in: 'header'
+                  name: 'Authorization'
+                  type: 'string'
+                  description: 'Attach Bearer JWT Token'
+                  required: true
+            responses:
+                '200':
+                    description: 'User account summary retrieved succesfully'
+                    schema:
+                        items:
+                            $ref: '#/definitions/Account'
+                '400':
+                    description: 'Invalid token'
+                '500':
+                    description: 'Internal server error'
+
+    /account/transaction/${accountTypeID}:
+        get:
+            tags:
+                - 'User Transactions'
+            summary: 'Transactions for the current month  of the selected account'
+            description: "API to retrieve user's transactions for an account type"
+            operationId: 'userTransaction'
+            consumes:
+                - 'application/json'
+            produces:
+                - 'application/json'
+            parameters:
+                - in: 'header'
+                  name: 'Authorization'
+                  type: 'string'
+                  description: 'Attach Bearer JWT Token'
+                  required: true
+                - in: path
+                  name: accountTypeID
+                  type: integer
+                  required: true
+                  description: 'ID of the type of transaction to get'
+            responses:
+                '200':
+                    description: 'User transactions retrieved succesfully'
+                    schema:
+                        items:
+                            $ref: '#/definitions/Transactions'
+                '400':
+                    description: 'Invalid token'
+                '500':
+                    description: 'Internal server error'
+
+    /account/transaction/${accountTypeID}/${transactionID}:
+        get:
+            tags:
+                - 'User Transactions'
+            summary: 'Transaction details for the selected transaction ID'
+            description: "API to retrieve user's transaction details"
+            operationId: 'userTransactionDetail'
+            consumes:
+                - 'application/json'
+            produces:
+                - 'application/json'
+            parameters:
+                - in: 'header'
+                  name: 'Authorization'
+                  type: 'string'
+                  description: 'Attach Bearer JWT Token'
+                  required: true
+                - in: path
+                  name: accountTypeID
+                  type: integer
+                  required: true
+                  description: 'ID of the type of transaction to get'
+                - in: path
+                  name: transactionID
+                  type: integer
+                  required: true
+                  description: 'ID of the transaction to get'
+            responses:
+                '200':
+                    description: 'User transaction details retrieved succesfully'
+                    schema:
+                        items:
+                            $ref: '#/definitions/Transactions'
+                '400':
+                    description: 'Invalid token'
+                '500':
+                    description: 'Internal server error'
+        put:
+            tags:
+                - 'User Transactions'
+            summary: 'Update transaction details'
+            description: ''
+            operationId: 'updateSavings'
+            consumes:
+                - 'application/json'
+            produces:
+                - 'application/json'
+            parameters:
+                - in: 'header'
+                  name: 'Authorization'
+                  type: 'string'
+                  description: 'Attach Bearer JWT Token'
+                  required: true
+                - in: path
+                  name: accountTypeID
+                  type: integer
+                  required: true
+                  description: 'ID of the type of transaction to get'
+                - in: 'body'
+                  name: 'body'
+                  description: 'Details that need to be updated'
+                  required: true
+                  schema:
+                      type: 'object'
+                      properties:
+                          category:
+                              type: 'string'
+                          notes:
+                              type: 'string'
+                - in: path
+                  name: transactionID
+                  type: integer
+                  required: true
+                  description: 'ID of the transaction to get'
+            responses:
+                '200':
+                    description: Transaction details updated succesfully"
+                    schema:
+                        items:
+                            type: 'object'
+                            properties:
+                                status:
+                                    type: 'integer'
+                                    format: 'int32'
+                                message:
+                                    type: 'string'
+                                body:
+                                    type: 'object'
+                                    properties:
+                                        category:
+                                            type: 'string'
+                                        notes:
+                                            type: 'string'
+
+                '400':
+                    description: 'Invalid fields'
+                '500':
+                    description: 'Internal server error'
+
+definitions:
+    Account:
+        type: 'object'
+        properties:
+            id:
+                type: 'integer'
+                format: 'int32'
+            body:
+                type: 'object'
+                properties:
+                    balance:
+                        type: 'integer'
+                    type:
+                        type: 'string'
+
+    Transactions:
+        type: 'object'
+        properties:
+            id:
+                type: 'integer'
+                format: 'int32'
+            transaction:
+                type: 'object'
+                properties:
+                    date:
+                        type: 'string'
+                    description:
+                        type: 'string'
+                    amount:
+                        type: 'integer'
+                    type:
+                        type: 'string'
+                    category:
+                        type: 'string'
+                    notes:
+                        type: 'string'

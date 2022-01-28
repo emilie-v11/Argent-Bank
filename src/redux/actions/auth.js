@@ -1,4 +1,5 @@
 import AuthService from '../../services/auth.service';
+import { getUserInfos } from './userProfile';
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
@@ -7,7 +8,6 @@ import {
     LOGOUT,
     SET_MESSAGE,
 } from './types';
-import { getUserInfos } from './userProfile';
 
 export const register = (firstName, lastName, email, password) => dispatch => {
     return AuthService.register(firstName, lastName, email, password).then(
@@ -84,30 +84,3 @@ export const logout = () => dispatch => {
         type: LOGOUT,
     });
 };
-
-// export const login = (email, password) => async dispatch => {
-//     try {
-//         const data = await AuthService.login(email, password);
-//              console.log(data);
-//         dispatch({
-//             type: LOGIN_SUCCESS,
-//             payload: data,
-// //             payload: { token: data.body.token },
-//         });
-//         dispatch(getUserInfos());
-//     } catch (error) {
-//         const message =
-//             (error.response && error.response.data && error.response.data.message) ||
-//             error.message ||
-//             error.toString();
-
-//         dispatch({
-//             type: LOGIN_FAIL,
-//         });
-
-//         dispatch({
-//             type: SET_MESSAGE,
-//             payload: message,
-//         });
-//     }
-// };

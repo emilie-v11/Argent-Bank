@@ -33,7 +33,8 @@
 
 @media (min-width: 920px) {
     .hero {
-        height: 25rem;
+        /* height: 25rem; */
+        min-height: 25rem;
         background-position: 0% 33%;
     }
 

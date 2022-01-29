@@ -111,6 +111,7 @@ const LogInPage = props => {
                             <Input
                                 type="text"
                                 className="form-control text-lowercase"
+                                id="username"
                                 name="username"
                                 value={username}
                                 onChange={onChangeUsername}
@@ -125,6 +126,7 @@ const LogInPage = props => {
                             <Input
                                 type="password"
                                 className="form-control"
+                                id="password"
                                 name="password"
                                 value={password}
                                 onChange={onChangePassword}

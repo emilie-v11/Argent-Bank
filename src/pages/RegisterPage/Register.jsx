@@ -130,6 +130,7 @@ const Register = () => {
                                     <Input
                                         type="text"
                                         className="form-control text-capitalize"
+                                        id="firstname"
                                         name="firstname"
                                         value={firstname}
                                         onChange={onChangeFirstname}
@@ -144,6 +145,7 @@ const Register = () => {
                                     <Input
                                         type="text"
                                         className="form-control text-capitalize"
+                                        id="lastname"
                                         name="lastname"
                                         value={lastname}
                                         onChange={onChangeLastname}
@@ -158,6 +160,7 @@ const Register = () => {
                                     <Input
                                         type="text"
                                         className="form-control text-lowercase"
+                                        id="email"
                                         name="email"
                                         value={email}
                                         onChange={onChangeEmail}
@@ -172,6 +175,7 @@ const Register = () => {
                                     <Input
                                         type="password"
                                         className="form-control text-lowercase"
+                                        id="password"
                                         name="password"
                                         value={password}
                                         onChange={onChangePassword}

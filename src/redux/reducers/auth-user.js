@@ -4,15 +4,14 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
+    GET_USER_PROFILE,
     GET_USER_PROFILE_SUCCESS,
     GET_USER_PROFILE_FAIL,
     UPDATE_USER_PROFILE_SUCCESS,
     UPDATE_USER_PROFILE_FAIL,
-    GET_USER_PROFILE,
 } from '../actions/types';
 import { getCookie } from '../../services/useCookies';
 
-// const token = JSON.parse(localStorage.getItem('token'));
 const token = getCookie('signin-token');
 
 const initialState = token ? { isLoggedIn: true, token } : { isLoggedIn: false, token: null };
@@ -35,6 +34,7 @@ const authUser = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggedIn: true,
+                isLoaded: false,
                 token: payload.token,
                 firstName: payload.firstName,
                 lastName: payload.lastName,
@@ -47,6 +47,7 @@ const authUser = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggedIn: false,
+                isLoaded: false,
                 token: null,
                 firstName: '',
                 lastName: '',

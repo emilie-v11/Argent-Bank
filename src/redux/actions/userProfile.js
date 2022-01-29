@@ -13,12 +13,11 @@ export const getUserInfos = () => dispatch => {
             dispatch({
                 type: GET_USER_PROFILE,
             });
-
+            
             dispatch({
                 type: GET_USER_PROFILE_SUCCESS,
                 payload: response.body,
             });
-            return Promise.resolve();
         },
         error => {
             dispatch({
@@ -32,12 +31,10 @@ export const getUserInfos = () => dispatch => {
 export const UpdateUserInfos = data => dispatch => {
     return UserService.updateUserProfile(data).then(
         response => {
-            console.log(data);
             dispatch({
                 type: UPDATE_USER_PROFILE_SUCCESS,
                 payload: { ...data },
             });
-            return Promise.resolve();
         },
         error => {
             dispatch({

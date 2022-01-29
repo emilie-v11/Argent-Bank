@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
@@ -8,7 +9,6 @@ import { isEmail } from 'validator';
 
 import { register } from '../../redux/actions/auth';
 import SignInHeading from '../../components/SignInContainer/SignInHeading/SignInHeading';
-import { useNavigate } from 'react-router-dom';
 
 const required = value => {
     if (!value) {
@@ -103,17 +103,14 @@ const Register = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            dispatch(register(firstname, lastname, email, password))
-                .then(() => {
-                    setSuccessful(true);
-                    setTimeout(() => {
-                        setSuccessful(false);
-                        navigate('/login');
-                    }, 2000);
-                })
-                .catch(() => {
-                    setSuccessful(false);
-                });
+            dispatch(register(firstname, lastname, email, password));
+            setSuccessful(true);
+            setTimeout(() => {
+                navigate('/login');
+                window.location.reload();
+            }, 2000);
+        } else {
+            setSuccessful(false);
         }
     };
 

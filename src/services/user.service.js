@@ -10,7 +10,6 @@ class UserService {
                 url: API_URL + '/profile',
                 headers: { ...authHeader() },
             });
-            console.log(response.body);
             return response.data;
         } catch (error) {
             console.log('error getUserProfile', error);

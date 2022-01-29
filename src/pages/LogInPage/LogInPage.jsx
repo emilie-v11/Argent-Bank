@@ -53,9 +53,6 @@ const LogInPage = props => {
             setPassword('');
             setRememberMe(false);
         }
-        return () => {
-            form.current = false;
-        };
     }, []);
 
     const onChangeUsername = e => {
@@ -75,16 +72,15 @@ const LogInPage = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-
         setIsLoading(true);
-
+        let is_mounted = true;
         form.current.validateAll();
 
-        if (checkBtn.current.context._errors.length === 0) {
+        if (checkBtn.current.context._errors.length === 0 && is_mounted) {
             dispatch(login(username, password, rememberMe))
                 .then(() => {
-                    props.history.push('/profile');
                     window.location.reload();
+                    return <Navigate to="/profile" />;
                 })
                 .catch(() => {
                     setIsLoading(false);
@@ -92,6 +88,9 @@ const LogInPage = props => {
         } else {
             setIsLoading(false);
         }
+        return function cleanup() {
+            is_mounted = false;
+        };
     };
 
     if (isLoggedIn) {

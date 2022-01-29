@@ -20,7 +20,7 @@ import { getCookie } from './services/useCookies';
 function App() {
     const dispatch = useDispatch();
     const isLoaded = useSelector(state => state.authUser.isLoaded);
-    console.log(isLoaded);
+    const isLoggedIn = useSelector(state => state.authUser.isLoggedIn);
 
     useEffect(() => {
         // const token = localStorage.getItem('token');
@@ -30,7 +30,7 @@ function App() {
         }
     }, [dispatch]);
 
-    if (!isLoaded) {
+    if (!isLoaded && isLoggedIn) {
         return <Loader />;
     }
     return (

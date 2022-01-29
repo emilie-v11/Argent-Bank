@@ -16,14 +16,12 @@ class AuthService {
         const response = await axios.post(API_URL + '/login', { email, password });
         const token = response.data.body.token;
         if (token) {
-            // localStorage.setItem('token', JSON.stringify(token));
             setCookie('signin-token', token, 1);
         }
         return response.data;
     }
 
     logout() {
-        // localStorage.removeItem('token');
         const signTok = getCookie('signin-token');
         deleteCookie('signin-token', signTok);
     }

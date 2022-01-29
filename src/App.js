@@ -18,7 +18,6 @@ const Register = lazy(() => import('./pages/RegisterPage/Register'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage'));
 const Error404 = lazy(() => import('./pages/Error404/Error404'));
 
-// const renderLoader = () => <p>Loading</p>;
 const renderLoader = () => <Loader />;
 
 function App() {

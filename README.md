@@ -28,8 +28,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 -   [redux-thunk](https://github.com/reduxjs/redux-thunk) v2.4.1
 
--   [redux-persist](https://www.npmjs.com/package/redux-persist) v6.0.0
-
 -   [prop-types](https://www.npmjs.com/package/prop-types) v15.7.2
 
 -   [Bootstrap](https://getbootstrap.com/) v5.1.3

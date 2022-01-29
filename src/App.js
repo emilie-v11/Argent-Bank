@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
-import HomePage from './pages/HomePage/HomePage';
-import LogInPage from './pages/LogInPage/LogInPage';
-import Register from './pages/RegisterPage/Register';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
-import Error404 from './pages/Error404/Error404';
-
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserInfos } from './redux/actions/userProfile';
 import Loader from './components/Loader/Loader';
+
+import { getUserInfos } from './redux/actions/userProfile';
 import { getCookie } from './services/useCookies';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const LogInPage = lazy(() => import('./pages/LogInPage/LogInPage'));
+const Register = lazy(() => import('./pages/RegisterPage/Register'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage'));
+const Error404 = lazy(() => import('./pages/Error404/Error404'));
+
+// const renderLoader = () => <p>Loading</p>;
+const renderLoader = () => <Loader />;
 
 function App() {
     const dispatch = useDispatch();
@@ -23,7 +27,6 @@ function App() {
     const isLoggedIn = useSelector(state => state.authUser.isLoggedIn);
 
     useEffect(() => {
-        // const token = localStorage.getItem('token');
         const token = getCookie('signin-token');
         if (token) {
             dispatch(getUserInfos());
@@ -36,13 +39,15 @@ function App() {
     return (
         <BrowserRouter>
             <Header />
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/signup" element={<Register />} />
-                <Route path="/login" element={<LogInPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="*" element={<Error404 />} />
-            </Routes>
+            <Suspense fallback={renderLoader()}>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/signup" element={<Register />} />
+                    <Route path="/login" element={<LogInPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="*" element={<Error404 />} />
+                </Routes>
+            </Suspense>
             <Footer />
         </BrowserRouter>
     );

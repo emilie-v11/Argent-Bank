@@ -84,6 +84,8 @@ const authUser = (state = initialState, action) => {
         case UPDATE_USER_PROFILE_SUCCESS:
             return {
                 ...state,
+                isLoggedIn: true,
+                isLoaded: true,
                 firstName: payload.firstName,
                 lastName: payload.lastName,
             };
